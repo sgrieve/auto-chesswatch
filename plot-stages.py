@@ -1,0 +1,43 @@
+import sys
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from matplotlib.dates import DateFormatter
+from datetime import datetime
+
+dateparse = lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S')
+
+id = sys.argv[1]
+title = sys.argv[2]
+
+flow = pd.read_csv('data/{}.csv'.format(id), parse_dates=['date'], date_parser=dateparse)
+
+# we only want data for the last 12 months
+date_range = pd.to_datetime('now') - pd.DateOffset(months=12)
+flow = flow.query('date > @date_range')
+
+flow_series = pd.Series(data=flow['measurement'].values, index=flow['date'])
+
+daily_flow = flow_series.groupby(flow_series.index.date).mean()
+flow_days = sorted(list(set(flow_series.index.date)))
+
+ax = plt.gca()
+
+ax.spines['bottom'].set_visible(True)
+ax.set_ylabel('River level (mASD)')
+
+ax.plot(flow_days, daily_flow.values, color='tab:blue')
+
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+
+
+ax.spines['left'].set_visible(True)
+
+plt.title(title)
+
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
+plt.tight_layout()
+
+plt.savefig('plots/{}.png'.format(id))
