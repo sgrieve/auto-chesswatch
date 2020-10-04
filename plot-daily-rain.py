@@ -24,7 +24,7 @@ ax.bar(daily_totals.index, daily_totals.values, width=1,
        color=sns.color_palette("Blues_d")[3])
 
 
-plt.xlabel('Year')
+plt.xlabel('')
 plt.ylabel('Total Rainfall (mm)')
 
 plt.savefig('plots/rainfall.png')
