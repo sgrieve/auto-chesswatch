@@ -6,6 +6,19 @@ import matplotlib.dates as mdates
 from matplotlib.dates import DateFormatter
 from datetime import datetime
 
+
+def offset_correction(df, id):
+    '''
+    The Chesham data needs an offset of -27cm applied to all values,
+    and any negative values should be fixed at 0.
+    '''
+
+    if id == '2852TH-level-stage-i-15_min-mASD':
+        df['measurement'] = df['measurement'] - 0.27
+        df['measurement'] = df['measurement'].clip(lower=0.0)
+
+    return df
+
 dateparse = lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S')
 
 id = sys.argv[1]
@@ -16,6 +29,8 @@ flow = pd.read_csv('data/{}.csv'.format(id), parse_dates=['date'], date_parser=d
 # we only want data for the last 12 months
 date_range = pd.to_datetime('now') - pd.DateOffset(months=12)
 flow = flow.query('date > @date_range')
+
+flow = offset_correction(flow, id)
 
 flow_series = pd.Series(data=flow['measurement'].values, index=flow['date'])
 
