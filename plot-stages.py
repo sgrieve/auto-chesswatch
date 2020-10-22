@@ -62,4 +62,4 @@ ax2.set_yticks([])
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
 plt.tight_layout()
 
-plt.savefig('plots/{}_.png'.format(id), dpi=100)
+plt.savefig('plots/{}.png'.format(id), dpi=100)

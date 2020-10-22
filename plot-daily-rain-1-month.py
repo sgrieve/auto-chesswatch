@@ -30,4 +30,4 @@ ax.bar(daily_totals.index, daily_totals.values, width=1,
 plt.xlabel('')
 plt.ylabel('Total Rainfall (mm)')
 plt.tight_layout()
-plt.savefig('plots/rainfall-month_.png', dpi=100)
+plt.savefig('plots/rainfall-month.png', dpi=100)

@@ -62,4 +62,4 @@ ax2.set_yticks([])
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%d\n%b'))
 plt.tight_layout()
 
-plt.savefig('plots/{}-month_.png'.format(id), dpi=100)
+plt.savefig('plots/{}-month.png'.format(id), dpi=100)
