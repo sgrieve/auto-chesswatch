@@ -19,6 +19,9 @@ rain_series = pd.Series(data=rain['measurement'].values, index=rain['date'])
 daily_totals = rain_series.groupby(pd.Grouper(freq='D')).sum()
 
 fig, ax = plt.subplots()
+
+fig.set_size_inches(6.4, 2.4)
+
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
 ax.bar(daily_totals.index, daily_totals.values, width=1,
        color=sns.color_palette("Blues_d")[3])
@@ -27,4 +30,4 @@ ax.bar(daily_totals.index, daily_totals.values, width=1,
 plt.xlabel('')
 plt.ylabel('Total Rainfall (mm)')
 plt.tight_layout()
-plt.savefig('plots/rainfall.png')
+plt.savefig('plots/rainfall_.png', dpi=100)

@@ -11,10 +11,10 @@ script:
   - python update-data.py 2859TH-level-downstage-i-15_min-mASD data/
   - python update-data.py 2859TH-level-stage-i-15_min-mASD data/
   - python update-data.py 278744TP-rainfall-tipping_bucket_raingauge-t-15_min-mm data/
-  - python plot-stages.py 2852TH-level-stage-i-15_min-mASD "Chesham Stage"
-  - python plot-stages.py 2859TH-level-stage-i-15_min-mASD "Rickmansworth Stage"
-  - python plot-stages-1-month.py 2852TH-level-stage-i-15_min-mASD "Chesham Stage"
-  - python plot-stages-1-month.py 2859TH-level-stage-i-15_min-mASD "Rickmansworth Stage"
+  - python plot-stages.py 2852TH-level-stage-i-15_min-mASD "Chesham"
+  - python plot-stages.py 2859TH-level-stage-i-15_min-mASD "Rickmansworth"
+  - python plot-stages-1-month.py 2852TH-level-stage-i-15_min-mASD "Chesham"
+  - python plot-stages-1-month.py 2859TH-level-stage-i-15_min-mASD "Rickmansworth"
   - python plot-daily-rain.py
   - python plot-daily-rain-1-month.py
 

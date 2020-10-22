@@ -38,6 +38,9 @@ daily_flow = flow_series.groupby(flow_series.index.date).mean()
 flow_days = sorted(list(set(flow_series.index.date)))
 
 ax = plt.gca()
+fig = plt.gcf()
+
+fig.set_size_inches(6.4, 2.4)
 
 ax.spines['bottom'].set_visible(True)
 ax.set_ylabel('River level (mASD)')
@@ -47,12 +50,16 @@ ax.plot(flow_days, daily_flow.values, color='tab:blue')
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
-
 ax.spines['left'].set_visible(True)
 
-plt.title(title)
+# Creating a fake axis so we can have the title on the right
+ax2 = ax.twinx()
+ax2.set_ylabel(title, fontsize=14)
+ax2.spines['top'].set_visible(False)
+ax2.spines['right'].set_visible(False)
+ax2.set_yticks([])
 
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
 plt.tight_layout()
 
-plt.savefig('plots/{}.png'.format(id))
+plt.savefig('plots/{}_.png'.format(id), dpi=100)
