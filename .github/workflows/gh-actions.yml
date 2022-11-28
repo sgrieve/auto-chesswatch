@@ -1,5 +1,5 @@
 name: daily-chesswatch-update
-
+on: [push]
 jobs:
   build:
 
