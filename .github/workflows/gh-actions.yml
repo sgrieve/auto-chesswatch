@@ -2,7 +2,7 @@ name: daily-chesswatch-update
 
 on:
   schedule:
-  - cron:  '58 14 * * *'
+  - cron:  '37 4 * * *'
 
 permissions:
   contents: write
