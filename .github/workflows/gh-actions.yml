@@ -28,6 +28,7 @@ jobs:
 
       - name: Update data
         run: python update-data.py 2852TH-level-stage-i-15_min-mASD data/
+        run: python update-data.py 2859TH-level-downstage-i-15_min-mASD data/
 
       - name: Generate plots
         run: python plot-stages.py 2852TH-level-stage-i-15_min-mASD "Chesham"
