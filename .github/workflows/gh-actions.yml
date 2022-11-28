@@ -41,4 +41,6 @@ jobs:
       - name: Generate plots
         run: python plot-stages.py 2852TH-level-stage-i-15_min-mASD "Chesham"
 
-- uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Daily update of data and plots
