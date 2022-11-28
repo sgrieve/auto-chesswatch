@@ -1,11 +1,9 @@
 name: daily-chesswatch-update
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+  schedule:
+  - cron:  '58 14 * * *'
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: write
   pages: write
