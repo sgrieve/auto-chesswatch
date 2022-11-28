@@ -12,8 +12,8 @@ jobs:
         with:
           python-version: '3.8'
 
+      - name: Install packages
         run: pip install -r requirements.txt
 
-      # You can test your matrix by printing the current Python version
       - name: Update data
         run: python update-data.py 2852TH-level-stage-i-15_min-mASD data/
